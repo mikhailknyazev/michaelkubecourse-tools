@@ -36,7 +36,7 @@ ARG VEGETA_VERSION=12.8.4
 WORKDIR /build
 
 RUN apt update && \
-    apt install -y zip unzip curl jq less wget git \
+    apt install -y zip unzip curl jq less wget git procps \
     && \
     pip install --no-cache-dir eks-rolling-update \
     && \
