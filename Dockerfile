@@ -1,6 +1,6 @@
-FROM python:3.9.5-slim-buster
+FROM python:3.9.6-slim-buster
 
-ARG TOOLS_VERSION=1.0.0
+ARG TOOLS_VERSION=1.0.1
 
 LABEL \
   maintainer="Michael K" \
@@ -13,22 +13,22 @@ LABEL \
 
 # https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html
 # https://github.com/kubernetes/kubectl/releases
-ARG KUBE_VERSION=1.20.7
+ARG KUBE_VERSION=1.20.8
 
 # https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
 ARG AWS_IAM_AUTHENTICATOR_VERSION=1.19.6
 
 # https://github.com/helm/helm/releases
-ARG HELM_VERSION=3.5.4
+ARG HELM_VERSION=3.6.2
 
 # https://github.com/hashicorp/terraform/releases
-ARG TERRAFORM_VERSION=0.15.4
+ARG TERRAFORM_VERSION=1.0.2
 
 # https://github.com/aws/amazon-ec2-instance-selector
 ARG EC2_INSTANCE_SELECTOR_VERSION=2.0.2
 
 # https://github.com/argoproj/argo-workflows/releases
-ARG ARGO_CLI_VERSION=2.12.11
+ARG ARGO_CLI_VERSION=3.1.1
 
 # https://github.com/tsenart/vegeta/releases
 ARG VEGETA_VERSION=12.8.4
@@ -61,7 +61,7 @@ RUN apt update && \
     cp ec2-instance-selector /usr/local/bin/ && \
     chmod +x /usr/local/bin/ec2-instance-selector \
     && \
-    curl -LO https://github.com/argoproj/argo/releases/download/v${ARGO_CLI_VERSION}/argo-linux-amd64.gz && \
+    curl -LO https://github.com/argoproj/argo-workflows/releases/download/v${ARGO_CLI_VERSION}/argo-linux-amd64.gz && \
     gunzip argo-linux-amd64.gz && \
     cp argo-linux-amd64 /usr/local/bin/argo && \
     chmod +x /usr/local/bin/argo \
